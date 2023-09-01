@@ -1,0 +1,25 @@
+Generalmente il codice rispetta la synchronous execution, cioè le istruzioni vengono eseguite una dopo l'altra.
+
+Ci sono casi in cui le istruzioni non devono essere seguite immediatamente, quindi mentre si aspetta la risposta
+da una di queste possono essere eseguite altre istruzioni per non sprecare tempo.
+Per eseguire più istruzioni contemporaneamente si usa l'asynchronous programming, in cui le righe di codice vengono
+eseguite in un ordine diverso rispetto a quello in cui sono state scritte.
+Sfruttando questa modalità le attività a esecuzione prolungata vengono scaricate su un thread in background e
+quando l'attività è completata il codice di cui abbiamo bisogno per elaborare i dati dell'attività viene 
+reinserito nel thread singolo principale.
+
+Quando l'interprete esegue il codice, ogni funzione chiamata viene aggiunta allo stack (struttura di dati simile 
+a un elenco. Gli stack seguono il principio LIFO.
+es.
+se il codice chiama la funzione A, questa viene aggiunta allo stack di chiamate, se la funzione A chiama la funzione B,
+questa viene aggiunta in cima allo stack di chiamate.
+Quando l'interprete completa l'esecuzione di una funzione questa viene rimossa dallo stack di chiamate.
+Per cui la funzione B verrà eseguita prima della A, verrà rimossa dallo stack e poi si procederà con la chiamata alla
+funzione A e alla sua rimozione.
+Le funzioni interne vengono sempre eseguite prima delle loro funzioni esterne.
+
+Quando ci si trova davanti ad un'operazione asincrona, questa viene aggiunta a una tabella nella sua memoria,
+che a sua volta memorizza l'operazione, la condizione per il suo completamento e la funzione da chiamare quando è
+completata. Al termine dell'operazione l'interprete aggiunge la funzione associata alla coda dei messaggi.
+Una coda è una struttura dati simile a un elenco, in cui gli elementi possono essere aggiunti solo in fondo,
+ma rimossi solo dall'alto (nastro di una cassa)
